@@ -1,4 +1,4 @@
-package primenumbers;
+package hackerrank.primenumbers;
 
 import java.util.Vector;
 

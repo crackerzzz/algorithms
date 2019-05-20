@@ -1,4 +1,4 @@
-package primenumbers;
+package hackerrank.primenumbers;
 
 public class SieveOfEratosthenes {
 

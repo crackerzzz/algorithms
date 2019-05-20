@@ -1,4 +1,4 @@
-package primenumbers;
+package hackerrank.primenumbers;
 
 public class BruteForce {
 
@@ -10,8 +10,8 @@ public class BruteForce {
 		int temp = n;
 
 		// find 2 factors
-		while (n % 2 == 0) {
-			temp = temp / 2;
+		while ((n & 1) == 0) {
+			temp = temp >> 1;
 			System.out.print("2 ");
 		}
 
