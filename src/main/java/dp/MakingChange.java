@@ -44,7 +44,7 @@ public class MakingChange {
 	}
 
 	private static int makeChangeNonGreedyRecursive(int[] denominations, int change, int current, int depth) {
-		int tDepth = depth*15;
+		int tDepth = depth * 15;
 		System.out.println(padLeft(String.format("change=%d, current=%d, depth=%d", change, current, depth), tDepth));
 		if (change == 0) {
 			System.out.println(padLeft(String.format("return 0, depth=%d", depth), tDepth));
@@ -64,6 +64,39 @@ public class MakingChange {
 		return minCoins + 1;
 	}
 
+	public static int makeChangeDP(int[] denominations, int change) {
+		final int[] cache = new int[change + 1];
+		for (int i = 0; i < cache.length; i++) {
+			cache[i] = -1;
+		}
+		return makeChangeDP(denominations, change, cache, -1, 1);
+	}
+
+	private static int makeChangeDP(int[] denominations, int change, final int[] cache, int current, int depth) {
+		if (cache[change] != -1) {
+			return cache[change];
+		}
+		int tDepth = depth * 15;
+		System.out.println(padLeft(String.format("change=%d, current=%d, depth=%d", change, current, depth), tDepth));
+		if (change == 0) {
+			System.out.println(padLeft(String.format("return 0, depth=%d", depth), tDepth));
+			return 0;
+		}
+		int minCoins = Integer.MAX_VALUE;
+		for (int i = denominations.length - 1; i >= 0; i--) {
+			if (change >= denominations[i]) {
+				int tMinCoins = makeChangeDP(denominations, change - denominations[i], cache, denominations[i],
+						depth + 1);
+				if (tMinCoins < minCoins) {
+					minCoins = tMinCoins;
+				}
+			}
+		}
+		System.out.println(padLeft(String.format("return %d, depth=%d", (minCoins + 1), depth), tDepth));
+		cache[change] = minCoins + 1;
+		return cache[change];
+	}
+
 	public static String padLeft(String s, int n) {
 		return String.format("%" + n + "s", s);
 	}
@@ -77,6 +110,8 @@ public class MakingChange {
 				"makeChangeGreedyRecursive for(" + change + ")=" + makeChangeGreedyRecursive(denominations, change));
 		System.out.println("makeChangeNonGreedyRecursive for(" + change + ")="
 				+ makeChangeNonGreedyRecursive(denominations, change));
+
+		System.out.println("makeChangeDP for(" + change + ")=" + makeChangeDP(denominations, change));
 	}
 
 }
