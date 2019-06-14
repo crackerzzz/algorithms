@@ -73,11 +73,13 @@ public class MakingChange {
 	}
 
 	private static int makeChangeDP(int[] denominations, int change, final int[] cache, int current, int depth) {
+		int tDepth = depth * 15;
 		if (cache[change] != -1) {
+			System.out.println(padLeft(String.format("Cache=%d, change=%d, denominations=%d, depth=%d", cache[change], change, current, depth), tDepth));			
 			return cache[change];
 		}
-		int tDepth = depth * 15;
-		System.out.println(padLeft(String.format("change=%d, current=%d, depth=%d", change, current, depth), tDepth));
+		
+		System.out.println(padLeft(String.format("change=%d, denominations=%d, depth=%d", change, current, depth), tDepth));
 		if (change == 0) {
 			System.out.println(padLeft(String.format("return 0, depth=%d", depth), tDepth));
 			return 0;
@@ -102,14 +104,14 @@ public class MakingChange {
 	}
 
 	public static void main(String[] args) {
-		final int[] denominations = new int[] { 1, 6, 10 };
+		final int[] denominations = new int[] { 1, 10, 6 };
 		final int change = 12;
-		System.out.println(
-				"makeChangeGreedyBruteForce for(" + change + ")=" + makeChangeGreedyBruteForce(denominations, change));
-		System.out.println(
-				"makeChangeGreedyRecursive for(" + change + ")=" + makeChangeGreedyRecursive(denominations, change));
-		System.out.println("makeChangeNonGreedyRecursive for(" + change + ")="
-				+ makeChangeNonGreedyRecursive(denominations, change));
+//		System.out.println(
+//				"makeChangeGreedyBruteForce for(" + change + ")=" + makeChangeGreedyBruteForce(denominations, change));
+//		System.out.println(
+//				"makeChangeGreedyRecursive for(" + change + ")=" + makeChangeGreedyRecursive(denominations, change));
+//		System.out.println("makeChangeNonGreedyRecursive for(" + change + ")="
+//				+ makeChangeNonGreedyRecursive(denominations, change));
 
 		System.out.println("makeChangeDP for(" + change + ")=" + makeChangeDP(denominations, change));
 	}

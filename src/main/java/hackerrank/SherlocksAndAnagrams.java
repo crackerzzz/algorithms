@@ -65,6 +65,6 @@ public class SherlocksAndAnagrams {
 	public static void main(String[] args) {
 		System.out.println(getSubstrings("abba"));
 //		System.out.println(isAnagram("abba", "baba"));
-		System.out.println(findAnagrams(getSubstrings("abba")));
+//		System.out.println(findAnagrams(getSubstrings("abba")));
 	}
 }
