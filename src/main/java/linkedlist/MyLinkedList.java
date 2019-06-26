@@ -3,20 +3,16 @@ package linkedlist;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LinkedList<K extends Comparable<K>> {
+public class MyLinkedList<K extends Comparable<K>> {
 	Node<K> head;
 	Node<K> tail;
 
-	public LinkedList() {
+	public MyLinkedList() {
 
-	}
-
-	public LinkedList(List<K> list) {
-		list.forEach(ele -> add(ele));
 	}
 
 	public void add(K element) {
-		LinkedList.Node<K> node = new LinkedList.Node<>(element);
+		Node<K> node = new Node<>(element);
 		if (head == null) {
 			head = node;
 			tail = head;
@@ -38,7 +34,7 @@ public class LinkedList<K extends Comparable<K>> {
 
 	public static class Node<K> {
 		K element;
-		LinkedList.Node<K> next;
+		Node<K> next;
 
 		public Node(K element) {
 			this.setElement(element);

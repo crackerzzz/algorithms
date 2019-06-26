@@ -1,12 +1,10 @@
 package linkedlist;
 
-import java.util.Arrays;
-
-import linkedlist.LinkedList.Node;
+import linkedlist.MyLinkedList.Node;
 
 public class FindMiddle {
 
-	public static int findMiddle(LinkedList<Integer> list) {
+	public static int findMiddle(MyLinkedList<Integer> list) {
 		Node<Integer> fast = list.head;
 		Node<Integer> slow = list.head;
 
@@ -22,8 +20,13 @@ public class FindMiddle {
 	}
 
 	public static void main(String[] args) {
-		LinkedList<Integer> list = new LinkedList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
-
+		MyLinkedList<Integer> list = new MyLinkedList<>();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(5);
+		list.add(6);
+		list.add(8);
 		System.out.println(findMiddle(list));
 	}
 }
