@@ -2,7 +2,7 @@ package stack;
 
 import java.util.Stack;
 
-public class SpecialStack {
+public class SpecialStackWithNExtraSpace {
 	private Stack<Integer> valueStack = new Stack<>();
 	private Stack<Integer> maxStack = new Stack<>();
 
@@ -30,7 +30,7 @@ public class SpecialStack {
 	}
 
 	public static void main(String[] args) {
-		SpecialStack stack = new SpecialStack();
+		SpecialStackWithNExtraSpace stack = new SpecialStackWithNExtraSpace();
 		stack.push(10);
 		stack.push(15);
 		stack.push(5);
